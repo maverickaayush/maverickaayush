@@ -13,10 +13,10 @@
 
 Second-year B.Tech CSE (Cybersecurity) student at Bennett University. I build security tooling that is deterministic where it has to be (scoring, compliance verdicts) and uses AI only where it helps (remediation text, schema suggestions), never in the decision path.
 
-## ~$ ./metrics --languages --calendar
+## ~$ ./activity
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/maverickaayush/maverickaayush/main/github-metrics.svg" alt="Terminal-style GitHub metrics: languages and commit calendar" width="100%" />
+  <img src="https://raw.githubusercontent.com/maverickaayush/maverickaayush/main/assets/activity.svg" alt="Terminal-style panel: language breakdown and recently pushed repositories" width="100%" />
 </p>
 
 ## ~$ cat projects/ONUS
