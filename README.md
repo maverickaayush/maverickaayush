@@ -13,6 +13,12 @@
 
 Second-year B.Tech CSE (Cybersecurity) student at Bennett University. I build security tooling that is deterministic where it has to be (scoring, compliance verdicts) and uses AI only where it helps (remediation text, schema suggestions), never in the decision path.
 
+## ~$ ./metrics --languages --calendar
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/maverickaayush/maverickaayush/main/github-metrics.svg" alt="Terminal-style GitHub metrics: languages and commit calendar" width="100%" />
+</p>
+
 ## ~$ cat projects/ONUS
 
 **[ONUS](https://github.com/maverickaayush/ONUS)** is an open-source, AI-assisted VAPT platform, listed in OWASP's Vulnerability Scanning Tools directory. Point it at a domain you are authorized to test and it does the rest.
