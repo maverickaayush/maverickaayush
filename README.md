@@ -69,7 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-_First sync runs right after you push._
+- `CRITICAL` [CVE-2026-73802](https://github.com/advisories/GHSA-x4q3-gcj3-m6cf) | gitea-runner: workflow container.options passes host namespaces and capability flags to job... | 2026-10-02
+- `CRITICAL` [CVE-2026-10032](https://github.com/advisories/GHSA-72qq-p3r5-f7wq) | a2ui/webcore: openUrl permits javascript: URI execution via agent-supplied button actions | 2026-10-02
+- `CRITICAL` [GHSA-v2f8-6655-7grj](https://github.com/advisories/GHSA-v2f8-6655-7grj) | Vibe-Trading FastAPI endpoints permit unauthenticated access, file upload, and an RCE chain | 2026-10-02
+- `CRITICAL` [GHSA-jqmf-mx4f-hfr6](https://github.com/advisories/GHSA-jqmf-mx4f-hfr6) | Vibe-Trading LLM-callable tools permit command execution, code injection, and SSRF | 2026-10-02
+- `CRITICAL` [GHSA-gg6r-gp4c-89hp](https://github.com/advisories/GHSA-gg6r-gp4c-89hp) | Trigger.dev: V1 coordinator default-secret unauth Socket.IO | 2026-10-02
+
+<sub>Source: GitHub Advisory Database | synced 2026-10-03 19:43 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
