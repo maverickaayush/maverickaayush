@@ -1,0 +1,33 @@
+name: Metrics
+
+on:
+  schedule:
+    - cron: "42 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics
+  cancel-in-progress: true
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Generate terminal-style metrics
+        # pinned to the v3.34 release commit; bump deliberately, not automatically
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: maverickaayush
+          committer_token: ${{ github.token }}
+          committer_message: "chore: refresh metrics"
+          filename: github-metrics.svg
+          template: terminal
+          base: header, metadata
+          plugin_languages: yes
+          plugin_isocalendar: yes
+          config_timezone: Asia/Kolkata
