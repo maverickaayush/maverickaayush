@@ -47,6 +47,8 @@ INFO = [
     ("Degree", "B.Tech CSE (Cybersecurity)"),
     ("Host", LOCATION),
     ("Shell", "Python, Java, TypeScript"),
+    ("Stack", "FastAPI, Next.js, Docker"),
+    ("Tools", "Nmap, ZAP, Nuclei, FFUF"),
     ("Focus", "VAPT, network compliance"),
     ("Project", "ONUS (OWASP-listed), Valsec"),
     ("Rank", "TryHackMe top 6%"),
@@ -455,9 +457,13 @@ def build():
     port_w_px = max((len(l.rstrip()) for l in portrait), default=0) * P_CW
     port_h = len(portrait) * P_LH
     info_x = PAD + (port_w_px + INFO_GAP if portrait else 0)
-    info_h = len(info_rows) * LH
+    # The info column is stretched so its first line sits level with the top of the portrait and the
+    # colour blocks end level with the bottom of it. Row pitch never drops below the normal line height.
+    n_info = len(info_rows)
+    info_pitch = max(LH, (port_h - FS) / (n_info - 1)) if portrait and n_info > 1 else LH
+    info_h = (n_info - 1) * info_pitch + FS + 2
     block_h = max(port_h, info_h)
-    info_y0 = port_top + (block_h - info_h) / 2 + FS + 2
+    info_y0 = port_top + FS - 2
     cmd2_y = port_top + block_h + 30
     out_y0 = cmd2_y + LH
     placed = []  # (row, baseline_y or calendar_top)
@@ -516,7 +522,7 @@ def build():
             parts.append(reveal(el, t + i * 0.035))
     t_info = t
     for i, row in enumerate(info_rows):
-        y = round(info_y0 + i * LH, 1)
+        y = round(info_y0 + i * info_pitch, 1)
         if row == "PALETTE":
             sq = "".join(
                 f'<rect x="{round(info_x + j * 20, 1)}" y="{round(y - FS + 2, 1)}" width="16" height="14" rx="2" fill="{c}"/>'
