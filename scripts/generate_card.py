@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Generate an animated nmap-style terminal card as a self-contained SVG.
+"""Generate an animated terminal card as a self-contained SVG.
+
+The session is: `neofetch` (ASCII portrait on the left, short info on the right), then
+`nmap` (the longer info), then the metrics session (languages + isometric contribution graph).
 
 Pure standard library: no third-party packages, no external assets, no JavaScript.
 The animation is SMIL inside the SVG, which GitHub renders when the file is
@@ -9,6 +12,8 @@ Env vars:
   GITHUB_LOGIN  GitHub username (default: maverickaayush)
   GITHUB_TOKEN  optional, raises API rate limits for the live stats line
   OUT_PATH      output file (default: assets/profile.svg)
+  PORTRAIT_PATH ASCII portrait text file made by scripts/make_portrait.py
+                (default: assets/portrait.txt). If missing, the info block is shown without it.
   METRICS_RAW   raw lowlighter/metrics "terminal" SVG (default: github-metrics.svg).
                 If present, its whoami / languages / isometric calendar sections are
                 continued inside this same terminal window. If missing or unreadable,
@@ -26,14 +31,26 @@ LOGIN = os.environ.get("GITHUB_LOGIN", "maverickaayush")
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 OUT_PATH = os.environ.get("OUT_PATH", "assets/profile.svg")
 METRICS_RAW = os.environ.get("METRICS_RAW", "github-metrics.svg")
+PORTRAIT_PATH = os.environ.get("PORTRAIT_PATH", "assets/portrait.txt")
 
 # ----------------------------------------------------------------------------
 # Edit this block to change what the card says
 # ----------------------------------------------------------------------------
 HOST_PROMPT = "aayush@kali"
+NEOFETCH_CMD = "neofetch"
 COMMAND = f"nmap -sV -sC {LOGIN}"
 LOCATION = "New Delhi, IN"
-TAGLINE = "cybersecurity | vapt | open source | bennett university '29"
+
+# Short info shown next to the portrait, neofetch style: (key, value)
+INFO = [
+    ("OS", "Bennett University '29"),
+    ("Degree", "B.Tech CSE (Cybersecurity)"),
+    ("Host", LOCATION),
+    ("Shell", "Python, Java, TypeScript"),
+    ("Focus", "VAPT, network compliance"),
+    ("Project", "ONUS (OWASP-listed), Valsec"),
+    ("Rank", "TryHackMe top 6%"),
+]
 PORTS = [
     # (port, service, version / banner text)
     ("22/tcp", "whoami", "Aayush Yadav | B.Tech CSE (Cybersecurity), Bennett"),
@@ -47,6 +64,7 @@ PORTS = [
 ]
 
 # Continuation of the session (needs github-metrics.svg from the Metrics workflow)
+MIN_LANG_PCT = 0.5            # hide languages below this share, keeps the card shorter
 SHOW_METRICS_BANNER = False   # lowlighter's "ABSOLUTELY NO WARRANTY" header + "Connection reset" footer
 CAL_WIDTH = 430               # on-screen width of the isometric calendar, in px
 
@@ -72,15 +90,10 @@ COLOR_MAP = {
     "#216e39": GREEN,      # level 4
 }
 
-BANNER = r"""
-   ###       ###    ##    ## ##     ##  ######  ##     ##
-  ## ##     ## ##    ##  ##  ##     ## ##    ## ##     ##
- ##   ##   ##   ##    ####   ##     ## ##       ##     ##
-##     ## ##     ##    ##    ##     ##  ######  #########
-######### #########    ##    ##     ##       ## ##     ##
-##     ## ##     ##    ##    ##     ## ##    ## ##     ##
-##     ## ##     ##    ##     #######   ######  ##     ##
-""".strip("\n").split("\n")
+# Ramp used by scripts/make_portrait.py, light to dense. Density picks the shade of green.
+RAMP = " .'`,:;-~=+*xoO#%@"
+PORTRAIT_TONES = [(6, "#0f7a30"), (12, "#16b343"), (99, GREEN)]
+PALETTE = ["#ff5f56", "#ffbd2e", GREEN, CYAN, "#5aa9ff", "#c678dd", WHITE, DIM]
 
 # ----------------------------------------------------------------------------
 # Layout
@@ -88,9 +101,10 @@ BANNER = r"""
 FS = 14            # body font size
 CW = 8.4           # body char width at FS (textLength keeps this exact)
 LH = 21            # body line height
-BFS = 14           # banner font size
-BCW = 8.4
-BLH = 16
+P_CW = 4.6         # portrait char width
+P_FS = 7.6         # portrait font size
+P_LH = 7.9         # portrait line height
+INFO_GAP = 56      # space between portrait and info column
 PAD = 26
 TITLE_H = 38
 
@@ -302,17 +316,88 @@ def load_metrics(path=None):
     return {"rows": rows, "cal": cal}
 
 
+def load_portrait(path=None):
+    """Return the ASCII portrait as a list of lines, or [] if the file is missing."""
+    try:
+        with open(path or PORTRAIT_PATH, encoding="utf-8") as f:
+            lines = f.read().rstrip("\n").split("\n")
+        return [ln.rstrip() for ln in lines]
+    except OSError:
+        print("note: no portrait file, showing info block only")
+        return []
+
+
+def tone_of(ch):
+    idx = RAMP.find(ch)
+    for limit, color in PORTRAIT_TONES:
+        if idx <= limit:
+            return color
+    return GREEN
+
+
+def portrait_row(line):
+    """Group a portrait line into coloured runs (shade follows character density)."""
+    segs = []
+    for ch in line:
+        color = tone_of(ch) if ch != " " else (segs[-1][1] if segs else GREEN)
+        if segs and segs[-1][1] == color:
+            segs[-1] = (segs[-1][0] + ch, color)
+        else:
+            segs.append((ch, color))
+    return segs
+
+
+def portrait_els(line, y):
+    """One <text> per run of characters, placed by column, so no renderer has to keep runs of spaces."""
+    out = []
+    for m in re.finditer(r"\S+(?: \S+)*", line):
+        segs = portrait_row(m.group(0))
+        out.append(text_el(round(PAD + m.start() * P_CW, 1), y, segs, size=P_FS, cw=P_CW))
+    return "".join(out)
+
+
+def typed_cmd(cid, x, y, cmd, begin, per_char=0.085):
+    """A command that types itself out. Returns (svg, end_time)."""
+    n = len(cmd)
+    dur = round(n * per_char, 2)
+    values = ";".join(str(round(i * CW, 1)) for i in range(n + 1))
+    key_times = ";".join(str(round(i / n, 4)) for i in range(n + 1))
+    svg = (
+        f'<clipPath id="{cid}"><rect x="{x}" y="{y - FS - 2}" width="0" height="{LH + 4}">'
+        f'<animate attributeName="width" values="{values}" keyTimes="{key_times}" calcMode="discrete" '
+        f'begin="{round(begin, 2)}s" dur="{dur}s" fill="freeze"/></rect></clipPath>'
+        f'<g clip-path="url(#{cid})">{text_el(x, y, [(cmd, WHITE)])}</g>'
+    )
+    return svg, begin + dur
+
+
+def reveal(inner, begin):
+    return f'<g opacity="0"><set attributeName="opacity" to="1" begin="{round(begin, 2)}s" fill="freeze"/>{inner}</g>'
+
+
 def build():
     stats = live_stats()
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     metrics = load_metrics()
+    portrait = load_portrait()
+
+    # --- neofetch info rows (right of the portrait) -------------------------
+    key_w = max(len(k) for k, _ in INFO) + 2
+    info_rows = [
+        [(HOST_PROMPT.split("@")[0], GREEN, True), ("@", WHITE), (HOST_PROMPT.split("@")[1], GREEN, True)],
+        [("-" * len(HOST_PROMPT), DIM)],
+    ]
+    for k, v in INFO:
+        info_rows.append(("KV", k + ":", v))
+    info_rows.append([])
+    info_rows.append("PALETTE")
 
     # --- rows of the terminal output (segments of (text, colour)) -----------
     port_w = max(len(p[0]) for p in PORTS) + 2
     svc_w = max(len(p[1]) for p in PORTS) + 2
     rows = [
         [("Starting Nmap 7.95 ( https://nmap.org ) at " + now, WHITE)],
-        [(f"Nmap scan report for ", WHITE), (LOGIN, GREEN), (f" ({LOCATION})", DIM)],
+        [("Nmap scan report for ", WHITE), (LOGIN, GREEN), (f" ({LOCATION})", DIM)],
         [("Host is up (0.00042s latency).", WHITE)],
         [("", WHITE)],
         [("PORT".ljust(port_w) + "STATE ".ljust(7) + "SERVICE".ljust(svc_w) + "VERSION", CYAN)],
@@ -342,14 +427,20 @@ def build():
     n_nmap_rows = len(rows)
     if metrics:  # same session continues: whoami / locale / ncal
         rows.append([("", WHITE)])
-        rows.extend(metrics["rows"])
+        for r in metrics["rows"]:
+            if r != "CAL" and MIN_LANG_PCT:
+                txt = "".join(seg[0] for seg in r)
+                m = re.search(r"\]\s*([\d.]+)\s*%", txt)
+                if m and float(m.group(1)) < MIN_LANG_PCT:
+                    continue
+            rows.append(r)
 
     prompt_txt = f"{HOST_PROMPT}:~$ "
     max_chars = max(
         [len(prompt_txt) + len(COMMAND)]
         + [sum(len(seg[0]) for seg in r) for r in rows if r != "CAL"]
     )
-    width = int(max(max_chars * CW, max(len(b) for b in BANNER) * BCW) + PAD * 2 + 24)
+    width = int(max_chars * CW + PAD * 2 + 24)
 
     cal = metrics["cal"] if metrics else None
     if cal:
@@ -359,14 +450,16 @@ def build():
         cal_x = round((width - cal_w) / 2, 1)
 
     # --- vertical positions -------------------------------------------------
-    y = TITLE_H + PAD + 4
-    banner_y0 = y
-    y += len(BANNER) * BLH + 14
-    tagline_y = y
-    y += LH + 10
-    cmd_y = y
-    y += LH
-    out_y0 = y
+    cmd1_y = TITLE_H + PAD + 4
+    port_top = cmd1_y + 14
+    port_w_px = max((len(l.rstrip()) for l in portrait), default=0) * P_CW
+    port_h = len(portrait) * P_LH
+    info_x = PAD + (port_w_px + INFO_GAP if portrait else 0)
+    info_h = len(info_rows) * LH
+    block_h = max(port_h, info_h)
+    info_y0 = port_top + (block_h - info_h) / 2 + FS + 2
+    cmd2_y = port_top + block_h + 30
+    out_y0 = cmd2_y + LH
     placed = []  # (row, baseline_y or calendar_top)
     cy = out_y0
     for r in rows:
@@ -386,9 +479,13 @@ def build():
         f'aria-label="Terminal card for {escape(LOGIN)}">'
     )
     parts.append(f"<title>{escape(LOGIN)} | terminal profile card</title>")
-    desc = "Animated terminal output describing " + escape(LOGIN) + ": " + "; ".join(f"{p[1]}: {p[2]}" for p in PORTS)
+    desc = (
+        "Animated terminal session for " + escape(LOGIN)
+        + (": an ASCII portrait next to a neofetch-style summary, then " if portrait else ": a neofetch-style summary, then ")
+        + "nmap output (" + "; ".join(f"{p[1]}: {p[2]}" for p in PORTS) + ")"
+    )
     if metrics:
-        desc += ". Followed by language usage bars" + (" and an isometric GitHub contribution calendar." if metrics["cal"] else ".")
+        desc += ", followed by language usage bars" + (" and an isometric GitHub contribution calendar." if metrics["cal"] else ".")
     parts.append(f"<desc>{desc}</desc>")
 
     # window chrome
@@ -404,27 +501,43 @@ def build():
         f"{escape(HOST_PROMPT)}: ~</text>"
     )
 
-    # banner (always visible)
-    for i, line in enumerate(BANNER):
-        parts.append(text_el(PAD, banner_y0 + i * BLH + 12, [(line, GREEN)], size=BFS, cw=BCW))
-    parts.append(text_el(PAD, tagline_y + 4, [(TAGLINE, DIM)]))
-
-    # prompt + typed command
-    parts.append(text_el(PAD, cmd_y, [(HOST_PROMPT, GREEN), (":~$ ", WHITE)]))
+    # 1) first prompt: neofetch
+    t0 = 0.7
+    parts.append(text_el(PAD, cmd1_y, [(HOST_PROMPT, GREEN), (":~$ ", WHITE)]))
     cmd_x = PAD + len(prompt_txt) * CW
-    n = len(COMMAND)
-    t0, dur = 0.7, 1.7
-    values = ";".join(str(round(i * CW, 1)) for i in range(n + 1))
-    key_times = ";".join(str(round(i / n, 4)) for i in range(n + 1))
-    parts.append(
-        f'<clipPath id="typed"><rect x="{cmd_x}" y="{cmd_y - FS - 2}" width="0" height="{LH + 4}">'
-        f'<animate attributeName="width" values="{values}" keyTimes="{key_times}" calcMode="discrete" '
-        f'begin="{t0}s" dur="{dur}s" fill="freeze"/></rect></clipPath>'
-    )
-    parts.append(f'<g clip-path="url(#typed)">{text_el(cmd_x, cmd_y, [(COMMAND, WHITE)])}</g>')
+    svg, t = typed_cmd("typed1", cmd_x, cmd1_y, NEOFETCH_CMD, t0)
+    parts.append(svg)
+    t += 0.35
 
-    # output rows appear one after another once the command is "run"
-    t = t0 + dur + 0.35
+    # portrait paints in top to bottom while the info lines tick in beside it
+    for i, line in enumerate(portrait):
+        el = portrait_els(line, round(port_top + i * P_LH + P_FS, 1))
+        if el:
+            parts.append(reveal(el, t + i * 0.035))
+    t_info = t
+    for i, row in enumerate(info_rows):
+        y = round(info_y0 + i * LH, 1)
+        if row == "PALETTE":
+            sq = "".join(
+                f'<rect x="{round(info_x + j * 20, 1)}" y="{round(y - FS + 2, 1)}" width="16" height="14" rx="2" fill="{c}"/>'
+                for j, c in enumerate(PALETTE)
+            )
+            parts.append(reveal(sq, t_info))
+        elif isinstance(row, tuple) and row[0] == "KV":
+            el = text_el(round(info_x, 1), y, [(row[1], GREEN, True)]) + text_el(round(info_x + (key_w + 1) * CW, 1), y, [(row[2], WHITE)])
+            parts.append(reveal(el, t_info))
+        else:
+            el = text_el(round(info_x, 1), y, row)
+            if el:
+                parts.append(reveal(el, t_info))
+        t_info += 0.12
+    t = max(t + len(portrait) * 0.035, t_info) + 0.5
+
+    # 2) second prompt: nmap, typed, then output rows one after another
+    parts.append(reveal(text_el(PAD, cmd2_y, [(HOST_PROMPT, GREEN), (":~$ ", WHITE)]), t))
+    svg, t = typed_cmd("typed2", cmd_x, cmd2_y, COMMAND, t + 0.05)
+    parts.append(svg)
+    t += 0.35
     for i, (row, ypos) in enumerate(placed):
         step = 0.16 if i < n_nmap_rows else 0.11
         if row == "CAL":
@@ -437,9 +550,7 @@ def build():
             continue
         el = text_el(PAD, ypos, row)
         if el:
-            parts.append(
-                f'<g opacity="0"><set attributeName="opacity" to="1" begin="{round(t, 2)}s" fill="freeze"/>{el}</g>'
-            )
+            parts.append(reveal(el, t))
         t += step
 
     # final prompt with blinking cursor
