@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [GHSA-jqmf-mx4f-hfr6](https://github.com/advisories/GHSA-jqmf-mx4f-hfr6) | Vibe-Trading LLM-callable tools permit command execution, code injection, and SSRF | 2026-10-02
 - `CRITICAL` [GHSA-gg6r-gp4c-89hp](https://github.com/advisories/GHSA-gg6r-gp4c-89hp) | Trigger.dev: V1 coordinator default-secret unauth Socket.IO | 2026-10-02
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-04 08:47 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-04 08:51 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
