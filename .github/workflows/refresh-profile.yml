@@ -22,17 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate terminal card
+      - name: Generate terminal card (nmap + metrics session)
         env:
           GITHUB_LOGIN: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/generate_card.py
-
-      - name: Generate activity panel
-        env:
-          GITHUB_LOGIN: ${{ github.repository_owner }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/generate_activity.py
 
       - name: Update advisories block
         env:

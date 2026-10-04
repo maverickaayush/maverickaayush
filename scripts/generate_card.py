@@ -9,16 +9,23 @@ Env vars:
   GITHUB_LOGIN  GitHub username (default: maverickaayush)
   GITHUB_TOKEN  optional, raises API rate limits for the live stats line
   OUT_PATH      output file (default: assets/profile.svg)
+  METRICS_RAW   raw lowlighter/metrics "terminal" SVG (default: github-metrics.svg).
+                If present, its whoami / languages / isometric calendar sections are
+                continued inside this same terminal window. If missing or unreadable,
+                the card is just the nmap section.
 """
 import json
 import os
+import re
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from html import escape
 
 LOGIN = os.environ.get("GITHUB_LOGIN", "maverickaayush")
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 OUT_PATH = os.environ.get("OUT_PATH", "assets/profile.svg")
+METRICS_RAW = os.environ.get("METRICS_RAW", "github-metrics.svg")
 
 # ----------------------------------------------------------------------------
 # Edit this block to change what the card says
@@ -39,6 +46,10 @@ PORTS = [
     ("8080/tcp", "http-proxy", "tryonus.tech (hosted ONUS)"),
 ]
 
+# Continuation of the session (needs github-metrics.svg from the Metrics workflow)
+SHOW_METRICS_BANNER = False   # lowlighter's "ABSOLUTELY NO WARRANTY" header + "Connection reset" footer
+CAL_WIDTH = 430               # on-screen width of the isometric calendar, in px
+
 # ----------------------------------------------------------------------------
 # Theme
 # ----------------------------------------------------------------------------
@@ -51,6 +62,15 @@ WHITE = "#d5dde6"
 CYAN = "#39d0d8"
 YELLOW = "#ffd166"
 FONT = "'JetBrains Mono','Fira Code','DejaVu Sans Mono',Menlo,Consolas,monospace"
+
+# lowlighter uses GitHub's light-mode green scale; map it to the card palette
+COLOR_MAP = {
+    "#ebedf0": "#243241",  # no contributions
+    "#9be9a8": "#0b4a22",  # level 1
+    "#40c463": "#0f7a30",  # level 2
+    "#30a14e": "#16b343",  # level 3
+    "#216e39": GREEN,      # level 4
+}
 
 BANNER = r"""
    ###       ###    ##    ## ##     ##  ######  ##     ##
@@ -96,20 +116,196 @@ def live_stats():
 
 
 def text_el(x, y, segs, size=FS, cw=CW):
-    """One <text> row made of coloured segments, width pinned with textLength."""
-    n = sum(len(t) for t, _ in segs)
+    """One <text> row made of coloured segments, width pinned with textLength.
+
+    A segment is (text, colour) or (text, colour, bold).
+    """
+    n = sum(len(seg[0]) for seg in segs)
     if n == 0:
         return ""
-    spans = "".join(f'<tspan fill="{c}">{escape(t)}</tspan>' for t, c in segs)
+    spans = ""
+    for seg in segs:
+        weight = ' font-weight="700"' if len(seg) > 2 and seg[2] else ""
+        spans += f'<tspan fill="{seg[1]}"{weight}>{escape(seg[0])}</tspan>'
     return (
         f'<text x="{x}" y="{y}" font-size="{size}" textLength="{round(n * cw, 1)}" '
         f'lengthAdjust="spacing" xml:space="preserve" style="white-space:pre">{spans}</text>'
     )
 
 
+# ----------------------------------------------------------------------------
+# Metrics section: parse lowlighter's terminal SVG into rows we can draw ourselves
+# ----------------------------------------------------------------------------
+CAL_TOKEN = "@@CAL@@"
+
+
+def remap_color(c):
+    return COLOR_MAP.get(c.lower(), c)
+
+
+def _color_bars(segs):
+    """Turn the '#' run inside [####    ] language bars green."""
+    out = []
+    for seg in segs:
+        text, color = seg[0], seg[1]
+        bold = len(seg) > 2 and seg[2]
+        pos = 0
+        for m in re.finditer(r"\[(#+)( *)\]", text):
+            if m.start() > pos:
+                out.append((text[pos:m.start()], color, bold))
+            out.append(("[", color, bold))
+            out.append((m.group(1), GREEN, bold))
+            out.append((m.group(2) + "]", color, bold))
+            pos = m.end()
+        if pos < len(text):
+            out.append((text[pos:], color, bold))
+    return out
+
+
+class _Lines:
+    def __init__(self, base_color=WHITE):
+        self.rows, self.cur, self.base = [], [], base_color
+        self.skip_nl = False
+
+    def newline(self):
+        self.rows.append(_color_bars(self.cur))
+        self.cur = []
+
+    def add(self, text, style):
+        if CAL_TOKEN in text:
+            before, after = text.split(CAL_TOKEN, 1)
+            self.add(before, style)
+            if self.cur:
+                self.newline()
+            self.rows.append("CAL")
+            self.skip_nl = True
+            text = after
+        if self.skip_nl and text:
+            if text.startswith("\n"):
+                text = text[1:]
+            self.skip_nl = False
+        parts = text.split("\n")
+        for i, part in enumerate(parts):
+            if i > 0:
+                self.newline()
+            if part:
+                self.cur.append((part, style.get("color", self.base), bool(style.get("bold"))))
+
+    def finish(self):
+        if self.cur:
+            self.newline()
+        return self.rows
+
+
+def _walk(node, style, lines):
+    if node.text:
+        lines.add(node.text, style)
+    for ch in node:
+        st = dict(style)
+        tag = ch.tag.split("}")[-1]
+        if tag == "b":
+            st["bold"] = True
+        elif tag == "span":
+            m = re.search(r"color:\s*(#[0-9a-fA-F]{3,8})", ch.get("style", ""))
+            if m:
+                st["color"] = remap_color(m.group(1))
+            cls = ch.get("class", "")
+            if "ps1-path" in cls:
+                st["color"] = GREEN
+            elif "ps1-location" in cls:
+                st["color"] = CYAN
+        _walk(ch, st, lines)
+        if ch.tail:
+            lines.add(ch.tail, style)
+
+
+def _matrix(transform):
+    """Compose scale()/translate() into (sx, sy, tx, ty); ignores anything else."""
+    m = (1.0, 1.0, 0.0, 0.0)
+    for name, args in re.findall(r"(scale|translate)\(([^)]*)\)", transform or ""):
+        v = [float(a) for a in re.split(r"[ ,]+", args.strip()) if a]
+        if name == "scale":
+            op = (v[0], v[1] if len(v) > 1 else v[0], 0.0, 0.0)
+        else:
+            op = (1.0, 1.0, v[0], v[1] if len(v) > 1 else 0.0)
+        m = (m[0] * op[0], m[1] * op[1], m[0] * op[2] + m[2], m[1] * op[3] + m[3])
+    return m
+
+
+def _bbox(el, m, acc):
+    tag = el.tag.split("}")[-1]
+    if el is not None and el.get("transform"):
+        t = _matrix(el.get("transform"))
+        m = (m[0] * t[0], m[1] * t[1], m[0] * t[2] + m[2], m[1] * t[3] + m[3])
+    if tag == "path":
+        nums = [float(n) for n in re.findall(r"-?\d*\.?\d+", el.get("d", ""))]
+        for x, y in zip(nums[0::2], nums[1::2]):
+            X, Y = m[0] * x + m[2], m[1] * y + m[3]
+            acc[0], acc[1] = min(acc[0], X), min(acc[1], Y)
+            acc[2], acc[3] = max(acc[2], X), max(acc[3], Y)
+    for ch in el:
+        _bbox(ch, m, acc)
+
+
+def load_metrics(path=None):
+    """Return {"rows": [...], "cal": {...}|None} parsed from lowlighter's SVG, or None."""
+    path = path or METRICS_RAW
+    try:
+        with open(path, encoding="utf-8") as f:
+            raw = f.read()
+        pre = re.search(r"<pre>(.*)</pre>", raw, re.S).group(1)
+        cal = None
+        cm = re.search(r'<div class="isocalendar">\s*(<svg\b[^>]*>)(.*?)</svg>\s*</div>', pre, re.S)
+        if cm:
+            body = cm.group(2)
+            for old, new in COLOR_MAP.items():
+                body = body.replace(old, new)
+            acc = [1e9, 1e9, -1e9, -1e9]
+            _bbox(ET.fromstring(cm.group(1) + cm.group(2) + "</svg>"), (1.0, 1.0, 0.0, 0.0), acc)
+            if acc[2] > acc[0] and acc[3] > acc[1]:
+                pad = 4
+                cal = {"body": body, "vb": (acc[0] - pad, acc[1] - pad, acc[2] - acc[0] + 2 * pad, acc[3] - acc[1] + 2 * pad)}
+            pre = pre[: cm.start()] + CAL_TOKEN + pre[cm.end():]
+        root = ET.fromstring("<root>" + pre + "</root>")
+    except Exception as exc:  # missing file, unexpected markup, ...
+        print(f"note: metrics section skipped ({exc})")
+        return None
+
+    rows, first = [], True
+    for el in root:
+        cls = el.get("class", "")
+        tag = el.tag.split("}")[-1]
+        if tag == "div" and "banner" in cls:
+            if SHOW_METRICS_BANNER:
+                lines = _Lines(DIM)
+                _walk(el, {}, lines)
+                rows += lines.finish() + [[]]
+            continue
+        if tag == "footer":
+            if SHOW_METRICS_BANNER:
+                rows += [[], [("".join(el.itertext()), DIM)]]
+            continue
+        if tag == "div" and "stdin" in cls:
+            cmd = "".join(el.itertext()).split("$ ", 1)[-1].strip()
+            if not first:
+                rows.append([])
+            first = False
+            rows.append([(HOST_PROMPT, GREEN), (":~$ ", WHITE), (cmd, WHITE)])
+        elif tag == "div" and "stdout" in cls:
+            lines = _Lines()
+            _walk(el, {}, lines)
+            rows += lines.finish()
+    if not rows:
+        return None
+    if "CAL" in rows and not cal:
+        rows = [r for r in rows if r != "CAL"]
+    return {"rows": rows, "cal": cal}
+
+
 def build():
     stats = live_stats()
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    metrics = load_metrics()
 
     # --- rows of the terminal output (segments of (text, colour)) -----------
     port_w = max(len(p[0]) for p in PORTS) + 2
@@ -143,13 +339,24 @@ def build():
     rows.append([("|_updated: ", DIM), (now + " (GitHub Actions, daily)", WHITE)])
     rows.append([("", WHITE)])
     rows.append([("Nmap done: 1 IP address (1 host up) scanned in 0.42 seconds", WHITE)])
+    n_nmap_rows = len(rows)
+    if metrics:  # same session continues: whoami / locale / ncal
+        rows.append([("", WHITE)])
+        rows.extend(metrics["rows"])
 
     prompt_txt = f"{HOST_PROMPT}:~$ "
     max_chars = max(
         [len(prompt_txt) + len(COMMAND)]
-        + [sum(len(t) for t, _ in r) for r in rows]
+        + [sum(len(seg[0]) for seg in r) for r in rows if r != "CAL"]
     )
     width = int(max(max_chars * CW, max(len(b) for b in BANNER) * BCW) + PAD * 2 + 24)
+
+    cal = metrics["cal"] if metrics else None
+    if cal:
+        vb_x, vb_y, vb_w, vb_h = cal["vb"]
+        cal_w = min(CAL_WIDTH, width - PAD * 2)
+        cal_h = round(cal_w * vb_h / vb_w, 1)
+        cal_x = round((width - cal_w) / 2, 1)
 
     # --- vertical positions -------------------------------------------------
     y = TITLE_H + PAD + 4
@@ -160,9 +367,17 @@ def build():
     cmd_y = y
     y += LH
     out_y0 = y
-    y += len(rows) * LH + 4
-    final_prompt_y = y
-    height = int(y + PAD)
+    placed = []  # (row, baseline_y or calendar_top)
+    cy = out_y0
+    for r in rows:
+        if r == "CAL":
+            placed.append((r, cy - FS + 6))
+            cy += cal_h + 12
+        else:
+            placed.append((r, cy))
+            cy += LH
+    final_prompt_y = cy + 4
+    height = int(final_prompt_y + PAD)
 
     parts = []
     parts.append(
@@ -170,12 +385,11 @@ def build():
         f'viewBox="0 0 {width} {height}" font-family="{FONT}" role="img" '
         f'aria-label="Terminal card for {escape(LOGIN)}">'
     )
-    parts.append(f"<title>{escape(LOGIN)} | nmap-style profile card</title>")
-    parts.append(
-        f'<desc>Animated terminal output describing {escape(LOGIN)}: '
-        + "; ".join(f"{p[1]}: {p[2]}" for p in PORTS)
-        + "</desc>"
-    )
+    parts.append(f"<title>{escape(LOGIN)} | terminal profile card</title>")
+    desc = "Animated terminal output describing " + escape(LOGIN) + ": " + "; ".join(f"{p[1]}: {p[2]}" for p in PORTS)
+    if metrics:
+        desc += ". Followed by language usage bars" + (" and an isometric GitHub contribution calendar." if metrics["cal"] else ".")
+    parts.append(f"<desc>{desc}</desc>")
 
     # window chrome
     parts.append(f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="12" fill="{BG}" stroke="{BORDER}"/>')
@@ -210,17 +424,26 @@ def build():
     parts.append(f'<g clip-path="url(#typed)">{text_el(cmd_x, cmd_y, [(COMMAND, WHITE)])}</g>')
 
     # output rows appear one after another once the command is "run"
-    start = t0 + dur + 0.35
-    for i, segs in enumerate(rows):
-        el = text_el(PAD, out_y0 + i * LH, segs)
-        if not el:
+    t = t0 + dur + 0.35
+    for i, (row, ypos) in enumerate(placed):
+        step = 0.16 if i < n_nmap_rows else 0.11
+        if row == "CAL":
+            parts.append(
+                f'<g opacity="0"><animate attributeName="opacity" from="0" to="1" begin="{round(t, 2)}s" dur="0.9s" fill="freeze"/>'
+                f'<svg x="{cal_x}" y="{ypos}" width="{cal_w}" height="{cal_h}" '
+                f'viewBox="{vb_x:.1f} {vb_y:.1f} {vb_w:.1f} {vb_h:.1f}" overflow="visible">{cal["body"]}</svg></g>'
+            )
+            t += 0.9
             continue
-        parts.append(
-            f'<g opacity="0"><set attributeName="opacity" to="1" begin="{round(start + i * 0.16, 2)}s" fill="freeze"/>{el}</g>'
-        )
+        el = text_el(PAD, ypos, row)
+        if el:
+            parts.append(
+                f'<g opacity="0"><set attributeName="opacity" to="1" begin="{round(t, 2)}s" fill="freeze"/>{el}</g>'
+            )
+        t += step
 
     # final prompt with blinking cursor
-    end = start + len(rows) * 0.16 + 0.2
+    end = t + 0.2
     parts.append(
         f'<g opacity="0"><set attributeName="opacity" to="1" begin="{round(end, 2)}s" fill="freeze"/>'
         + text_el(PAD, final_prompt_y, [(HOST_PROMPT, GREEN), (":~$ ", WHITE)])
