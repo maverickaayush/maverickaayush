@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-102829](https://github.com/advisories/GHSA-v5rq-49vh-5v5c) | simple-git: VISUAL editor environment variable is omitted from unsafe editor detection | 2026-10-05
-- `CRITICAL` [CVE-2026-102828](https://github.com/advisories/GHSA-x6jw-m9v5-85vh) | simple-git unsafe-operation guard does not block trailer command configuration | 2026-10-05
-- `CRITICAL` [CVE-2026-104846](https://github.com/advisories/GHSA-p6vx-979v-rg4c) | Seroval: fromJSON() Promise thenable assimilation invokes plugin-produced callables (bypass... | 2026-10-05
-- `CRITICAL` [CVE-2026-90711](https://github.com/advisories/GHSA-jqcg-44mw-7w3h) | proxy-addr vulnerable to IP spoofing via IPv4-mapped IPv6 trust subnet | 2026-10-05
-- `CRITICAL` [CVE-2026-100721](https://github.com/advisories/GHSA-5h3f-q97h-ccvc) | vm2: NodeVM custom resolution bypasses external path boundaries | 2026-10-05
+- `CRITICAL` [CVE-2026-105851](https://github.com/advisories/GHSA-vc4h-q48j-5hcx) | Payload: Field access control bypass on auth collections | 2026-10-06
+- `CRITICAL` [CVE-2026-105844](https://github.com/advisories/GHSA-qf28-8hc6-vwrp) | Payload: Prototype pollution in Payload Import Export plugin | 2026-10-06
+- `CRITICAL` [CVE-2026-105845](https://github.com/advisories/GHSA-v49j-62m6-pgrr) | Payload: SQL Injection in SQLite and Postgres | 2026-10-06
+- `CRITICAL` [CVE-2026-105794](https://github.com/advisories/GHSA-w5f4-fx9m-m4q7) | MsQuic: Improper Certificate Validation in Microsoft.Native.Quic.MsQuic.OpenSSL | 2026-10-06
+- `CRITICAL` [CVE-2026-102422](https://github.com/advisories/GHSA-pqg4-j6r4-53mv) | shell-quote: quote() command injection via a line terminator in a token after a { comment }... | 2026-10-06
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-06 10:19 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-07 10:17 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
