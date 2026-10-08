@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-105851](https://github.com/advisories/GHSA-vc4h-q48j-5hcx) | Payload: Field access control bypass on auth collections | 2026-10-06
-- `CRITICAL` [CVE-2026-105844](https://github.com/advisories/GHSA-qf28-8hc6-vwrp) | Payload: Prototype pollution in Payload Import Export plugin | 2026-10-06
-- `CRITICAL` [CVE-2026-105845](https://github.com/advisories/GHSA-v49j-62m6-pgrr) | Payload: SQL Injection in SQLite and Postgres | 2026-10-06
-- `CRITICAL` [CVE-2026-105794](https://github.com/advisories/GHSA-w5f4-fx9m-m4q7) | MsQuic: Improper Certificate Validation in Microsoft.Native.Quic.MsQuic.OpenSSL | 2026-10-06
-- `CRITICAL` [CVE-2026-102422](https://github.com/advisories/GHSA-pqg4-j6r4-53mv) | shell-quote: quote() command injection via a line terminator in a token after a { comment }... | 2026-10-06
+- `CRITICAL` [CVE-2026-105697](https://github.com/advisories/GHSA-w794-rj3p-xv45) | Langflow: OS command injection (RCE) via arbitrary command in MCP stdio server configuration | 2026-10-07
+- `CRITICAL` [CVE-2026-105857](https://github.com/advisories/GHSA-r488-j9vj-wx3q) | Payload Form Builder has an RCE issue | 2026-10-07
+- `CRITICAL` [CVE-2026-105859](https://github.com/advisories/GHSA-f7hx-52q9-hcrf) | Payload: Unauthorized update to collection documents | 2026-10-07
+- `CRITICAL` [CVE-2026-105863](https://github.com/advisories/GHSA-66wr-7vmr-p5jq) | Payload authentication token field handling issue | 2026-10-07
+- `CRITICAL` [CVE-2026-93605](https://github.com/advisories/GHSA-pq68-rvw4-xp4r) | vm2 contains a sandbox escape vulnerability | 2026-10-07
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-07 10:17 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-08 10:36 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
