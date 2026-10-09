@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-105697](https://github.com/advisories/GHSA-w794-rj3p-xv45) | Langflow: OS command injection (RCE) via arbitrary command in MCP stdio server configuration | 2026-10-07
-- `CRITICAL` [CVE-2026-105857](https://github.com/advisories/GHSA-r488-j9vj-wx3q) | Payload Form Builder has an RCE issue | 2026-10-07
-- `CRITICAL` [CVE-2026-105859](https://github.com/advisories/GHSA-f7hx-52q9-hcrf) | Payload: Unauthorized update to collection documents | 2026-10-07
-- `CRITICAL` [CVE-2026-105863](https://github.com/advisories/GHSA-66wr-7vmr-p5jq) | Payload authentication token field handling issue | 2026-10-07
-- `CRITICAL` [CVE-2026-93605](https://github.com/advisories/GHSA-pq68-rvw4-xp4r) | vm2 contains a sandbox escape vulnerability | 2026-10-07
+- `CRITICAL` [CVE-2026-107726](https://github.com/advisories/GHSA-6v25-8wq6-xq4j) | Hazelcast allows arbitrary member memory access by low-privileged client | 2026-10-08
+- `CRITICAL` [CVE-2026-107722](https://github.com/advisories/GHSA-ww5h-9m49-7xx4) | fast-jwt: Incomplete patch of CVE-2026-34950: Non-whitespace key-prefix re-enables RSA→HS256... | 2026-10-08
+- `CRITICAL` [CVE-2026-61445](https://github.com/advisories/GHSA-9mp3-24cc-77mg) | PraisonAI: AICoder Arbitrary File Write and Command Execution via LLM Tool Calls | 2026-10-08
+- `CRITICAL` [CVE-2026-106446](https://github.com/advisories/GHSA-8r5x-fm3f-whwj) | Handlebars: JavaScript Injection via AST Type Confusion in compile (bypass of CVE-2026-33937) | 2026-10-08
+- `CRITICAL` [CVE-2026-106445](https://github.com/advisories/GHSA-p8wg-vrv2-v86f) | Handlebars: JavaScript Injection via Own Property Check Bypass | 2026-10-08
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-08 10:36 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-09 10:35 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
