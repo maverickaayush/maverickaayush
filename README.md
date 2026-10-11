@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-68582](https://github.com/advisories/GHSA-rj9j-8772-4h6c) | Vikunja: Link-share token reads any tenant's kanban buckets and enumerates usernames/IDs ins... | 2026-10-09
 - `CRITICAL` [CVE-2026-107726](https://github.com/advisories/GHSA-6v25-8wq6-xq4j) | Hazelcast allows arbitrary member memory access by low-privileged client | 2026-10-08
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-10 09:51 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-11 10:01 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
