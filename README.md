@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-88092](https://github.com/advisories/GHSA-rv87-ccxw-8ggf) | Microsoft Security Advisory CVE-2026-88092 - ASP.NET Core Security Feature Bypass Vulnerability | 2026-10-13
+- `CRITICAL` [CVE-2026-70188](https://github.com/advisories/GHSA-fpq8-4vhr-rcxx) | Microsoft Security Advisory CVE-2026-70188 - ASP.NET Core Security Feature Bypass Vulnerability | 2026-10-13
+- `CRITICAL` [CVE-2026-105016](https://github.com/advisories/GHSA-5gjq-3f94-rcf7) | Microsoft Security Advisory CVE-2026-105016 - Microsoft QUIC Remote Code Execution Vulnerabi... | 2026-10-13
 - `CRITICAL` [CVE-2026-108261](https://github.com/advisories/GHSA-x34j-47hf-4xg7) | TinaCMS admin preview iframe loads an attacker-controlled origin from the URL fragment | 2026-10-09
 - `CRITICAL` [CVE-2026-107845](https://github.com/advisories/GHSA-628f-v4f6-p37r) | Contao: Cross-site scripting in the comments bundle | 2026-10-09
-- `CRITICAL` [CVE-2026-107806](https://github.com/advisories/GHSA-p393-cf76-4jmr) | Nginx UI: Authenticated Remote Code Execution via Backup Restore App Config Overwrite | 2026-10-09
-- `CRITICAL` [CVE-2026-68582](https://github.com/advisories/GHSA-rj9j-8772-4h6c) | Vikunja: Link-share token reads any tenant's kanban buckets and enumerates usernames/IDs ins... | 2026-10-09
-- `CRITICAL` [CVE-2026-107726](https://github.com/advisories/GHSA-6v25-8wq6-xq4j) | Hazelcast allows arbitrary member memory access by low-privileged client | 2026-10-08
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-13 10:37 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-14 08:44 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
