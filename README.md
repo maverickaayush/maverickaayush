@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-108261](https://github.com/advisories/GHSA-x34j-47hf-4xg7) | TinaCMS admin preview iframe loads an attacker-controlled origin from the URL fragment | 2026-10-09
 - `CRITICAL` [CVE-2026-107845](https://github.com/advisories/GHSA-628f-v4f6-p37r) | Contao: Cross-site scripting in the comments bundle | 2026-10-09
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-14 08:44 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-15 08:19 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
