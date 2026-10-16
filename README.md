@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-88092](https://github.com/advisories/GHSA-rv87-ccxw-8ggf) | Microsoft Security Advisory CVE-2026-88092 - ASP.NET Core Security Feature Bypass Vulnerability | 2026-10-13
-- `CRITICAL` [CVE-2026-70188](https://github.com/advisories/GHSA-fpq8-4vhr-rcxx) | Microsoft Security Advisory CVE-2026-70188 - ASP.NET Core Security Feature Bypass Vulnerability | 2026-10-13
-- `CRITICAL` [CVE-2026-105016](https://github.com/advisories/GHSA-5gjq-3f94-rcf7) | Microsoft Security Advisory CVE-2026-105016 - Microsoft QUIC Remote Code Execution Vulnerabi... | 2026-10-13
-- `CRITICAL` [CVE-2026-108261](https://github.com/advisories/GHSA-x34j-47hf-4xg7) | TinaCMS admin preview iframe loads an attacker-controlled origin from the URL fragment | 2026-10-09
-- `CRITICAL` [CVE-2026-107845](https://github.com/advisories/GHSA-628f-v4f6-p37r) | Contao: Cross-site scripting in the comments bundle | 2026-10-09
+- `CRITICAL` [CVE-2026-102989](https://github.com/advisories/GHSA-qx66-fv34-fjm8) | TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses | 2026-10-15
+- `CRITICAL` [CVE-2026-94603](https://github.com/advisories/GHSA-2cvf-wqm6-wr9g) | Podman: The podman run command can be instructed to disable almost all sandboxing by image a... | 2026-10-15
+- `CRITICAL` [CVE-2026-77524](https://github.com/advisories/GHSA-637c-6jxx-4rwm) | KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication | 2026-10-15
+- `CRITICAL` [CVE-2026-77459](https://github.com/advisories/GHSA-fmxq-cgp8-87wp) | Argo CD: AppProject destination-namespace and resource restrictions bypassed by PreDelete/Po... | 2026-10-15
+- `CRITICAL` [CVE-2026-102748](https://github.com/advisories/GHSA-qj98-gp63-54xj) | Dgraph: Zero Unauthenticated HTTP Admin removeNode Denial of Service | 2026-10-15
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-15 08:19 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-16 08:12 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
