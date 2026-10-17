@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-105192](https://github.com/advisories/GHSA-w5f2-9q9c-ff4h) | LMCache: Remote code execution via unsafe deserialization in multiprocess mode transport | 2026-10-16
+- `CRITICAL` [CVE-2026-96620](https://github.com/advisories/GHSA-h4mw-j7qp-8mwm) | Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution | 2026-10-16
 - `CRITICAL` [CVE-2026-102989](https://github.com/advisories/GHSA-qx66-fv34-fjm8) | TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses | 2026-10-15
 - `CRITICAL` [CVE-2026-94603](https://github.com/advisories/GHSA-2cvf-wqm6-wr9g) | Podman: The podman run command can be instructed to disable almost all sandboxing by image a... | 2026-10-15
 - `CRITICAL` [CVE-2026-77524](https://github.com/advisories/GHSA-637c-6jxx-4rwm) | KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication | 2026-10-15
-- `CRITICAL` [CVE-2026-77459](https://github.com/advisories/GHSA-fmxq-cgp8-87wp) | Argo CD: AppProject destination-namespace and resource restrictions bypassed by PreDelete/Po... | 2026-10-15
-- `CRITICAL` [CVE-2026-102748](https://github.com/advisories/GHSA-qj98-gp63-54xj) | Dgraph: Zero Unauthenticated HTTP Admin removeNode Denial of Service | 2026-10-15
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-16 08:12 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-17 07:48 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
