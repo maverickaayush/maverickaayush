@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-94603](https://github.com/advisories/GHSA-2cvf-wqm6-wr9g) | Podman: The podman run command can be instructed to disable almost all sandboxing by image a... | 2026-10-15
 - `CRITICAL` [CVE-2026-77524](https://github.com/advisories/GHSA-637c-6jxx-4rwm) | KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication | 2026-10-15
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-18 08:02 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-19 08:54 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
