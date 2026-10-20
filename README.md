@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-111057](https://github.com/advisories/GHSA-f8c7-rwf9-fmgm) | Mercury: Unauthenticated Remote Code Execution in /api/terminals - access control bypass | 2026-10-19
+- `CRITICAL` [CVE-2026-111058](https://github.com/advisories/GHSA-rv4m-xm3f-3ccq) | Mercury: Unauthenticated Remote Code Execution via /api/kernels | 2026-10-19
 - `CRITICAL` [CVE-2026-105192](https://github.com/advisories/GHSA-w5f2-9q9c-ff4h) | LMCache: Remote code execution via unsafe deserialization in multiprocess mode transport | 2026-10-16
 - `CRITICAL` [CVE-2026-96620](https://github.com/advisories/GHSA-h4mw-j7qp-8mwm) | Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution | 2026-10-16
 - `CRITICAL` [CVE-2026-102989](https://github.com/advisories/GHSA-qx66-fv34-fjm8) | TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses | 2026-10-15
-- `CRITICAL` [CVE-2026-94603](https://github.com/advisories/GHSA-2cvf-wqm6-wr9g) | Podman: The podman run command can be instructed to disable almost all sandboxing by image a... | 2026-10-15
-- `CRITICAL` [CVE-2026-77524](https://github.com/advisories/GHSA-637c-6jxx-4rwm) | KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication | 2026-10-15
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-19 08:54 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-20 08:33 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
