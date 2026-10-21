@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-112403](https://github.com/advisories/GHSA-8g5g-8vmr-9782) | Pillow: Heap buffer overflow in ImagingJpegDecode | 2026-10-20
+- `CRITICAL` [GHSA-hq85-5cpj-mr62](https://github.com/advisories/GHSA-hq85-5cpj-mr62) | uv's bundled CA store trusts an emSign root whose intermediate CA keys are compromised | 2026-10-20
+- `CRITICAL` [GHSA-6q48-6c7w-9gw2](https://github.com/advisories/GHSA-6q48-6c7w-9gw2) | certifi bundles emSign root CAs with compromised intermediate CA keys | 2026-10-20
 - `CRITICAL` [CVE-2026-111057](https://github.com/advisories/GHSA-f8c7-rwf9-fmgm) | Mercury: Unauthenticated Remote Code Execution in /api/terminals - access control bypass | 2026-10-19
 - `CRITICAL` [CVE-2026-111058](https://github.com/advisories/GHSA-rv4m-xm3f-3ccq) | Mercury: Unauthenticated Remote Code Execution via /api/kernels | 2026-10-19
-- `CRITICAL` [CVE-2026-105192](https://github.com/advisories/GHSA-w5f2-9q9c-ff4h) | LMCache: Remote code execution via unsafe deserialization in multiprocess mode transport | 2026-10-16
-- `CRITICAL` [CVE-2026-96620](https://github.com/advisories/GHSA-h4mw-j7qp-8mwm) | Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution | 2026-10-16
-- `CRITICAL` [CVE-2026-102989](https://github.com/advisories/GHSA-qx66-fv34-fjm8) | TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses | 2026-10-15
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-20 08:33 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-21 08:35 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
