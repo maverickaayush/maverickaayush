@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-112393](https://github.com/advisories/GHSA-332p-7hrc-92wf) | Pillow: Heap buffer overflow in tiffWriteProc when saving TIFF to BytesIO | 2026-10-21
+- `CRITICAL` [CVE-2026-112900](https://github.com/advisories/GHSA-w889-685w-c8fh) | Pillow: Argument Injection in Ghostscript call, potentially leading into RCE | 2026-10-21
+- `CRITICAL` [CVE-2026-114125](https://github.com/advisories/GHSA-f2ph-cmg5-wxc8) | Storybook: Missing origin validation in Storybook preview allows code injection from malicio... | 2026-10-21
 - `CRITICAL` [CVE-2026-112403](https://github.com/advisories/GHSA-8g5g-8vmr-9782) | Pillow: Heap buffer overflow in ImagingJpegDecode | 2026-10-20
 - `CRITICAL` [GHSA-hq85-5cpj-mr62](https://github.com/advisories/GHSA-hq85-5cpj-mr62) | uv's bundled CA store trusts an emSign root whose intermediate CA keys are compromised | 2026-10-20
-- `CRITICAL` [GHSA-6q48-6c7w-9gw2](https://github.com/advisories/GHSA-6q48-6c7w-9gw2) | certifi bundles emSign root CAs with compromised intermediate CA keys | 2026-10-20
-- `CRITICAL` [CVE-2026-111057](https://github.com/advisories/GHSA-f8c7-rwf9-fmgm) | Mercury: Unauthenticated Remote Code Execution in /api/terminals - access control bypass | 2026-10-19
-- `CRITICAL` [CVE-2026-111058](https://github.com/advisories/GHSA-rv4m-xm3f-3ccq) | Mercury: Unauthenticated Remote Code Execution via /api/kernels | 2026-10-19
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-21 08:35 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-22 08:37 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
