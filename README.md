@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-112393](https://github.com/advisories/GHSA-332p-7hrc-92wf) | Pillow: Heap buffer overflow in tiffWriteProc when saving TIFF to BytesIO | 2026-10-21
-- `CRITICAL` [CVE-2026-112900](https://github.com/advisories/GHSA-w889-685w-c8fh) | Pillow: Argument Injection in Ghostscript call, potentially leading into RCE | 2026-10-21
-- `CRITICAL` [CVE-2026-114125](https://github.com/advisories/GHSA-f2ph-cmg5-wxc8) | Storybook: Missing origin validation in Storybook preview allows code injection from malicio... | 2026-10-21
-- `CRITICAL` [CVE-2026-112403](https://github.com/advisories/GHSA-8g5g-8vmr-9782) | Pillow: Heap buffer overflow in ImagingJpegDecode | 2026-10-20
-- `CRITICAL` [GHSA-hq85-5cpj-mr62](https://github.com/advisories/GHSA-hq85-5cpj-mr62) | uv's bundled CA store trusts an emSign root whose intermediate CA keys are compromised | 2026-10-20
+- `CRITICAL` [GHSA-673q-mjm6-r5xr](https://github.com/advisories/GHSA-673q-mjm6-r5xr) | Next.js: Unauthenticated Remote Code Execution in use cache functions returning typed arrays | 2026-10-22
+- `CRITICAL` [GHSA-cg2g-xh64-v4q7](https://github.com/advisories/GHSA-cg2g-xh64-v4q7) | DOMPurify SAFEFORTEMPLATES bypass: split template expressions survive in attached shadow roo... | 2026-10-22
+- `CRITICAL` [CVE-2026-96639](https://github.com/advisories/GHSA-v9pv-5gc8-w2m6) | Pillow multi-frame loaders can reuse stale native image storage after mode transitions | 2026-10-22
+- `CRITICAL` [CVE-2026-114139](https://github.com/advisories/GHSA-mchm-gjx6-7h55) | Sentry-Javascript: Middleware Bypass when using Tunnel route | 2026-10-22
+- `CRITICAL` [GHSA-2464-fhr4-w9xw](https://github.com/advisories/GHSA-2464-fhr4-w9xw) | Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are... | 2026-10-22
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-22 08:37 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-23 08:33 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
