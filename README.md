@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [GHSA-673q-mjm6-r5xr](https://github.com/advisories/GHSA-673q-mjm6-r5xr) | Next.js: Unauthenticated Remote Code Execution in use cache functions returning typed arrays | 2026-10-22
-- `CRITICAL` [GHSA-cg2g-xh64-v4q7](https://github.com/advisories/GHSA-cg2g-xh64-v4q7) | DOMPurify SAFEFORTEMPLATES bypass: split template expressions survive in attached shadow roo... | 2026-10-22
-- `CRITICAL` [CVE-2026-96639](https://github.com/advisories/GHSA-v9pv-5gc8-w2m6) | Pillow multi-frame loaders can reuse stale native image storage after mode transitions | 2026-10-22
-- `CRITICAL` [CVE-2026-114139](https://github.com/advisories/GHSA-mchm-gjx6-7h55) | Sentry-Javascript: Middleware Bypass when using Tunnel route | 2026-10-22
-- `CRITICAL` [GHSA-2464-fhr4-w9xw](https://github.com/advisories/GHSA-2464-fhr4-w9xw) | Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are... | 2026-10-22
+- `CRITICAL` [CVE-2026-115889](https://github.com/advisories/GHSA-897f-g5gm-fmxm) | Wasmtime: Bit-packing in Cranelift compiler causes silent overflow and miscompilation | 2026-10-23
+- `CRITICAL` [CVE-2026-112398](https://github.com/advisories/GHSA-5x8w-8jj5-q52h) | Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution | 2026-10-23
+- `CRITICAL` [CVE-2026-114509](https://github.com/advisories/GHSA-f9x3-7vq9-cph6) | Laravel TokenGuard authentication bypass through non-string API credentials | 2026-10-23
+- `CRITICAL` [GHSA-cxf3-9h37-7rr8](https://github.com/advisories/GHSA-cxf3-9h37-7rr8) | Echo: Rejected WebSocket upgrades can bypass Echo route-level access controls | 2026-10-23
+- `CRITICAL` [CVE-2026-77363](https://github.com/advisories/GHSA-pqh8-4pj7-32xx) | obsidian-tc HTTP transport lacks Origin/DNS-rebinding protection, enabling drive-by vault ac... | 2026-10-23
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-23 08:33 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-24 08:08 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
