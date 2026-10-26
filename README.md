@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [GHSA-cxf3-9h37-7rr8](https://github.com/advisories/GHSA-cxf3-9h37-7rr8) | Echo: Rejected WebSocket upgrades can bypass Echo route-level access controls | 2026-10-23
 - `CRITICAL` [CVE-2026-77363](https://github.com/advisories/GHSA-pqh8-4pj7-32xx) | obsidian-tc HTTP transport lacks Origin/DNS-rebinding protection, enabling drive-by vault ac... | 2026-10-23
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-25 08:26 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-26 08:56 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
