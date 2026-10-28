@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-115889](https://github.com/advisories/GHSA-897f-g5gm-fmxm) | Wasmtime: Bit-packing in Cranelift compiler causes silent overflow and miscompilation | 2026-10-23
-- `CRITICAL` [CVE-2026-112398](https://github.com/advisories/GHSA-5x8w-8jj5-q52h) | Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution | 2026-10-23
-- `CRITICAL` [CVE-2026-114509](https://github.com/advisories/GHSA-f9x3-7vq9-cph6) | Laravel TokenGuard authentication bypass through non-string API credentials | 2026-10-23
-- `CRITICAL` [GHSA-cxf3-9h37-7rr8](https://github.com/advisories/GHSA-cxf3-9h37-7rr8) | Echo: Rejected WebSocket upgrades can bypass Echo route-level access controls | 2026-10-23
-- `CRITICAL` [CVE-2026-77363](https://github.com/advisories/GHSA-pqh8-4pj7-32xx) | obsidian-tc HTTP transport lacks Origin/DNS-rebinding protection, enabling drive-by vault ac... | 2026-10-23
+- `CRITICAL` [CVE-2026-116692](https://github.com/advisories/GHSA-26p8-2jq9-3vq9) | MLflow vulnerable to remote code execution on unauthenticated servers via third-party scorer... | 2026-10-27
+- `CRITICAL` [CVE-2026-114607](https://github.com/advisories/GHSA-965c-763c-88jm) | better-auth: OAuth state can be used as a Magic Link to sign in as another user | 2026-10-27
+- `CRITICAL` [CVE-2026-96760](https://github.com/advisories/GHSA-6v38-4h7w-rj9h) | Authlib: empty signatures validation in JWS JSON deserialization | 2026-10-27
+- `CRITICAL` [CVE-2026-35002](https://github.com/advisories/GHSA-m4w4-3r8h-jw98) | Agno: Arbitrary code execution via eval() on fieldtype in FunctionCall | 2026-10-27
+- `CRITICAL` [CVE-2026-48705](https://github.com/advisories/GHSA-6hp3-vr39-rqw8) | MONAILabel Server Crash and Silent Inference Corruption via Crafted DICOM (pydicom DS/IS Val... | 2026-10-27
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-27 09:01 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-28 09:41 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
