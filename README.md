@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-116692](https://github.com/advisories/GHSA-26p8-2jq9-3vq9) | MLflow vulnerable to remote code execution on unauthenticated servers via third-party scorer... | 2026-10-27
 - `CRITICAL` [CVE-2026-114607](https://github.com/advisories/GHSA-965c-763c-88jm) | better-auth: OAuth state can be used as a Magic Link to sign in as another user | 2026-10-27
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-29 09:59 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-30 10:02 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
