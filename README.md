@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [GHSA-4xm8-rg9h-jhq2](https://github.com/advisories/GHSA-4xm8-rg9h-jhq2) | Signal K resources API path traversal can disclose the JWT signing secret and enable remote... | 2026-10-30
+- `CRITICAL` [GHSA-hff9-5pqw-6w9f](https://github.com/advisories/GHSA-hff9-5pqw-6w9f) | imgproxy has integer overflow in imgproxy ICO loader that causes denial of service and may p... | 2026-10-30
+- `CRITICAL` [GHSA-5xjx-3w67-w9x9](https://github.com/advisories/GHSA-5xjx-3w67-w9x9) | pypi-publish action revocation of CA in the chain that Sigstore uses in Trusted Publishing a... | 2026-10-30
 - `CRITICAL` [CVE-2026-117601](https://github.com/advisories/GHSA-6jp4-8v48-cc5v) | Electrum: Malicious server can replace a just-broadcast tx and try to trick user into RBF-in... | 2026-10-28
 - `CRITICAL` [CVE-2026-115893](https://github.com/advisories/GHSA-mghf-wjfp-p5xm) | Wasmtime: Cranelift backend on aarch64 can jump to incorrect target on large Wasm brtable in... | 2026-10-28
-- `CRITICAL` [CVE-2026-115905](https://github.com/advisories/GHSA-m665-v7pm-7grj) | zip: Critical Parser Differential & Security Control Bypass via Dual-Header Inconsistencies... | 2026-10-28
-- `CRITICAL` [CVE-2026-116692](https://github.com/advisories/GHSA-26p8-2jq9-3vq9) | MLflow vulnerable to remote code execution on unauthenticated servers via third-party scorer... | 2026-10-27
-- `CRITICAL` [CVE-2026-114607](https://github.com/advisories/GHSA-965c-763c-88jm) | better-auth: OAuth state can be used as a Magic Link to sign in as another user | 2026-10-27
 
-<sub>Source: GitHub Advisory Database | synced 2026-10-30 10:02 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-10-31 09:39 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
