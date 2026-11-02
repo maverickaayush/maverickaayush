@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-117601](https://github.com/advisories/GHSA-6jp4-8v48-cc5v) | Electrum: Malicious server can replace a just-broadcast tx and try to trick user into RBF-in... | 2026-10-28
 - `CRITICAL` [CVE-2026-115893](https://github.com/advisories/GHSA-mghf-wjfp-p5xm) | Wasmtime: Cranelift backend on aarch64 can jump to incorrect target on large Wasm brtable in... | 2026-10-28
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-01 10:28 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-02 11:09 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
