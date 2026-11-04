@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-44267](https://github.com/advisories/GHSA-33r5-xmm8-v6x5) | Elo JavaScript emitter has sandbox escape to arbitrary Node.js / browser code execution via... | 2026-11-03
+- `CRITICAL` [CVE-2026-44266](https://github.com/advisories/GHSA-7w38-ggh5-v542) | Elo Ruby backend has Remote Code Execution via unescaped #{...} interpolation in emitted str... | 2026-11-03
 - `CRITICAL` [GHSA-4xm8-rg9h-jhq2](https://github.com/advisories/GHSA-4xm8-rg9h-jhq2) | Signal K resources API path traversal can disclose the JWT signing secret and enable remote... | 2026-10-30
 - `CRITICAL` [GHSA-hff9-5pqw-6w9f](https://github.com/advisories/GHSA-hff9-5pqw-6w9f) | imgproxy has integer overflow in imgproxy ICO loader that causes denial of service and may p... | 2026-10-30
 - `CRITICAL` [GHSA-5xjx-3w67-w9x9](https://github.com/advisories/GHSA-5xjx-3w67-w9x9) | pypi-publish action revocation of CA in the chain that Sigstore uses in Trusted Publishing a... | 2026-10-30
-- `CRITICAL` [CVE-2026-117601](https://github.com/advisories/GHSA-6jp4-8v48-cc5v) | Electrum: Malicious server can replace a just-broadcast tx and try to trick user into RBF-in... | 2026-10-28
-- `CRITICAL` [CVE-2026-115893](https://github.com/advisories/GHSA-mghf-wjfp-p5xm) | Wasmtime: Cranelift backend on aarch64 can jump to incorrect target on large Wasm brtable in... | 2026-10-28
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-03 10:54 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-04 10:56 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
