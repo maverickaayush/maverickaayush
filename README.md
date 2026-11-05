@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [GHSA-hff9-5pqw-6w9f](https://github.com/advisories/GHSA-hff9-5pqw-6w9f) | imgproxy has integer overflow in imgproxy ICO loader that causes denial of service and may p... | 2026-10-30
 - `CRITICAL` [GHSA-5xjx-3w67-w9x9](https://github.com/advisories/GHSA-5xjx-3w67-w9x9) | pypi-publish action revocation of CA in the chain that Sigstore uses in Trusted Publishing a... | 2026-10-30
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-04 10:56 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-05 10:57 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
