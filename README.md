@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-105769](https://github.com/advisories/GHSA-5q7h-w9jf-cx97) | kaniko can send the build's Azure (Entra ID) access token to lookalike ACR registry hosts | 2026-11-05
 - `CRITICAL` [CVE-2026-44267](https://github.com/advisories/GHSA-33r5-xmm8-v6x5) | Elo JavaScript emitter has sandbox escape to arbitrary Node.js / browser code execution via... | 2026-11-03
 - `CRITICAL` [CVE-2026-44266](https://github.com/advisories/GHSA-7w38-ggh5-v542) | Elo Ruby backend has Remote Code Execution via unescaped #{...} interpolation in emitted str... | 2026-11-03
 - `CRITICAL` [GHSA-4xm8-rg9h-jhq2](https://github.com/advisories/GHSA-4xm8-rg9h-jhq2) | Signal K resources API path traversal can disclose the JWT signing secret and enable remote... | 2026-10-30
 - `CRITICAL` [GHSA-hff9-5pqw-6w9f](https://github.com/advisories/GHSA-hff9-5pqw-6w9f) | imgproxy has integer overflow in imgproxy ICO loader that causes denial of service and may p... | 2026-10-30
-- `CRITICAL` [GHSA-5xjx-3w67-w9x9](https://github.com/advisories/GHSA-5xjx-3w67-w9x9) | pypi-publish action revocation of CA in the chain that Sigstore uses in Trusted Publishing a... | 2026-10-30
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-05 10:57 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-06 10:53 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
