@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-105769](https://github.com/advisories/GHSA-5q7h-w9jf-cx97) | kaniko can send the build's Azure (Entra ID) access token to lookalike ACR registry hosts | 2026-11-05
-- `CRITICAL` [CVE-2026-44267](https://github.com/advisories/GHSA-33r5-xmm8-v6x5) | Elo JavaScript emitter has sandbox escape to arbitrary Node.js / browser code execution via... | 2026-11-03
-- `CRITICAL` [CVE-2026-44266](https://github.com/advisories/GHSA-7w38-ggh5-v542) | Elo Ruby backend has Remote Code Execution via unescaped #{...} interpolation in emitted str... | 2026-11-03
-- `CRITICAL` [GHSA-4xm8-rg9h-jhq2](https://github.com/advisories/GHSA-4xm8-rg9h-jhq2) | Signal K resources API path traversal can disclose the JWT signing secret and enable remote... | 2026-10-30
-- `CRITICAL` [GHSA-hff9-5pqw-6w9f](https://github.com/advisories/GHSA-hff9-5pqw-6w9f) | imgproxy has integer overflow in imgproxy ICO loader that causes denial of service and may p... | 2026-10-30
+- `CRITICAL` [GHSA-47w9-6r3f-938g](https://github.com/advisories/GHSA-47w9-6r3f-938g) | LXD has restricted project bypass leading to arbitrary command execution | 2026-11-06
+- `CRITICAL` [GHSA-pjff-c2wc-f6jm](https://github.com/advisories/GHSA-pjff-c2wc-f6jm) | LXD has arbitrary file write on client due to trusted image hash | 2026-11-06
+- `CRITICAL` [GHSA-fmc8-p6q7-75cc](https://github.com/advisories/GHSA-fmc8-p6q7-75cc) | LXD has argument injection in backup compression algorithm leading to AFW and ACE | 2026-11-06
+- `CRITICAL` [GHSA-vghh-5rfx-xhq8](https://github.com/advisories/GHSA-vghh-5rfx-xhq8) | LXD has arbitrary file read+write on host via rootfs/ symlink in malicious image | 2026-11-06
+- `CRITICAL` [GHSA-jpf8-86f3-wp38](https://github.com/advisories/GHSA-jpf8-86f3-wp38) | LXD has arbitrary file read+write on host via templates/ symlink in malicious image | 2026-11-06
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-06 10:53 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-07 10:11 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
