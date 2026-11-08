@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [GHSA-vghh-5rfx-xhq8](https://github.com/advisories/GHSA-vghh-5rfx-xhq8) | LXD has arbitrary file read+write on host via rootfs/ symlink in malicious image | 2026-11-06
 - `CRITICAL` [GHSA-jpf8-86f3-wp38](https://github.com/advisories/GHSA-jpf8-86f3-wp38) | LXD has arbitrary file read+write on host via templates/ symlink in malicious image | 2026-11-06
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-07 10:11 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-08 10:24 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
