@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [GHSA-47w9-6r3f-938g](https://github.com/advisories/GHSA-47w9-6r3f-938g) | LXD has restricted project bypass leading to arbitrary command execution | 2026-11-06
-- `CRITICAL` [GHSA-pjff-c2wc-f6jm](https://github.com/advisories/GHSA-pjff-c2wc-f6jm) | LXD has arbitrary file write on client due to trusted image hash | 2026-11-06
-- `CRITICAL` [GHSA-fmc8-p6q7-75cc](https://github.com/advisories/GHSA-fmc8-p6q7-75cc) | LXD has argument injection in backup compression algorithm leading to AFW and ACE | 2026-11-06
-- `CRITICAL` [GHSA-vghh-5rfx-xhq8](https://github.com/advisories/GHSA-vghh-5rfx-xhq8) | LXD has arbitrary file read+write on host via rootfs/ symlink in malicious image | 2026-11-06
-- `CRITICAL` [GHSA-jpf8-86f3-wp38](https://github.com/advisories/GHSA-jpf8-86f3-wp38) | LXD has arbitrary file read+write on host via templates/ symlink in malicious image | 2026-11-06
+- `CRITICAL` [CVE-2026-77596](https://github.com/advisories/GHSA-rjr3-43j3-4q8g) | Kubeflow Pipelines API server lacks authorization for shared pipeline uploads | 2026-11-09
+- `CRITICAL` [CVE-2026-102895](https://github.com/advisories/GHSA-gj9m-f8ph-pmhr) | GPUStack: Authentication bypass via trusted loopback source (reverse-proxy TCP peer or X-GPU... | 2026-11-09
+- `CRITICAL` [CVE-2026-115770](https://github.com/advisories/GHSA-rm8c-2cv8-jwf6) | Pocket ID: Email verification token remains valid after address change, enabling arbitrary v... | 2026-11-09
+- `CRITICAL` [CVE-2026-63471](https://github.com/advisories/GHSA-p2mm-64f6-gmpp) | fastapi-code-generator: Import-time RCE via route path - unescaped app.get('...') decorator | 2026-11-09
+- `CRITICAL` [CVE-2026-63469](https://github.com/advisories/GHSA-6xmv-cjr5-w3q8) | fastapi-code-generator: Import-time RCE via response status-code key - unescaped app.get(...... | 2026-11-09
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-09 11:33 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-10 11:13 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
