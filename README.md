@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-77596](https://github.com/advisories/GHSA-rjr3-43j3-4q8g) | Kubeflow Pipelines API server lacks authorization for shared pipeline uploads | 2026-11-09
-- `CRITICAL` [CVE-2026-102895](https://github.com/advisories/GHSA-gj9m-f8ph-pmhr) | GPUStack: Authentication bypass via trusted loopback source (reverse-proxy TCP peer or X-GPU... | 2026-11-09
-- `CRITICAL` [CVE-2026-115770](https://github.com/advisories/GHSA-rm8c-2cv8-jwf6) | Pocket ID: Email verification token remains valid after address change, enabling arbitrary v... | 2026-11-09
-- `CRITICAL` [CVE-2026-63471](https://github.com/advisories/GHSA-p2mm-64f6-gmpp) | fastapi-code-generator: Import-time RCE via route path - unescaped app.get('...') decorator | 2026-11-09
-- `CRITICAL` [CVE-2026-63469](https://github.com/advisories/GHSA-6xmv-cjr5-w3q8) | fastapi-code-generator: Import-time RCE via response status-code key - unescaped app.get(...... | 2026-11-09
+- `CRITICAL` [CVE-2026-126187](https://github.com/advisories/GHSA-xqc2-xf4c-x3h3) | React: Unauthenticated Remote Code Execution in React Server Components | 2026-11-10
+- `CRITICAL` [CVE-2026-125120](https://github.com/advisories/GHSA-pcrw-h46h-c93h) | Mongoose: sanitizeFilter not applied on countDocuments | 2026-11-10
+- `CRITICAL` [CVE-2026-107846](https://github.com/advisories/GHSA-8vv3-6qpc-gpw6) | bitcoinjs-lib: Undetected merkle node duplication in block root computation validates a forg... | 2026-11-10
+- `CRITICAL` [CVE-2026-102894](https://github.com/advisories/GHSA-62m9-f875-rqw6) | GPUStack: SAML callback trusts an unverified SAMLResponse, allowing authentication bypass an... | 2026-11-10
+- `CRITICAL` [CVE-2026-95860](https://github.com/advisories/GHSA-xggf-m53x-jc3f) | node-opcua: Namespace-Level RBAC Fail-Open - Anonymous Write/Call Bypass via Unbound Default... | 2026-11-10
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-10 11:13 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-11 10:58 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
