@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-102894](https://github.com/advisories/GHSA-62m9-f875-rqw6) | GPUStack: SAML callback trusts an unverified SAMLResponse, allowing authentication bypass an... | 2026-11-10
 - `CRITICAL` [CVE-2026-95860](https://github.com/advisories/GHSA-xggf-m53x-jc3f) | node-opcua: Namespace-Level RBAC Fail-Open - Anonymous Write/Call Bypass via Unbound Default... | 2026-11-10
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-11 10:58 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-12 11:12 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
