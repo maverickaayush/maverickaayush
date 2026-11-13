@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-100397](https://github.com/advisories/GHSA-x585-4vv8-2mh2) | Rucio: Unauthenticated administrator impersonation through SSH challenge tokens | 2026-11-13
+- `CRITICAL` [CVE-2026-122006](https://github.com/advisories/GHSA-f3w6-w445-fwh9) | Active Storage: Possible arbitrary file write and read in image analysis | 2026-11-12
+- `CRITICAL` [CVE-2026-118740](https://github.com/advisories/GHSA-4g86-54fm-h9h8) | Microsoft Security Advisory CVE-2026-118740 - Aspire Security Feature Bypass Vulnerability | 2026-11-12
 - `CRITICAL` [CVE-2026-126187](https://github.com/advisories/GHSA-xqc2-xf4c-x3h3) | React: Unauthenticated Remote Code Execution in React Server Components | 2026-11-10
-- `CRITICAL` [CVE-2026-125120](https://github.com/advisories/GHSA-pcrw-h46h-c93h) | Mongoose: sanitizeFilter not applied on countDocuments | 2026-11-10
-- `CRITICAL` [CVE-2026-107846](https://github.com/advisories/GHSA-8vv3-6qpc-gpw6) | bitcoinjs-lib: Undetected merkle node duplication in block root computation validates a forg... | 2026-11-10
-- `CRITICAL` [CVE-2026-102894](https://github.com/advisories/GHSA-62m9-f875-rqw6) | GPUStack: SAML callback trusts an unverified SAMLResponse, allowing authentication bypass an... | 2026-11-10
-- `CRITICAL` [CVE-2026-95860](https://github.com/advisories/GHSA-xggf-m53x-jc3f) | node-opcua: Namespace-Level RBAC Fail-Open - Anonymous Write/Call Bypass via Unbound Default... | 2026-11-10
+- `CRITICAL` [GHSA-2f3w-v7f5-vpgx](https://github.com/advisories/GHSA-2f3w-v7f5-vpgx) | Duplicate Advisory: Microsoft Security Advisory CVE-2026-118740 - Aspire Security Feature By... | 2026-11-10
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-12 11:12 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-13 10:59 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
