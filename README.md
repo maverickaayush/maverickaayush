@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-126187](https://github.com/advisories/GHSA-xqc2-xf4c-x3h3) | React: Unauthenticated Remote Code Execution in React Server Components | 2026-11-10
 - `CRITICAL` [GHSA-2f3w-v7f5-vpgx](https://github.com/advisories/GHSA-2f3w-v7f5-vpgx) | Duplicate Advisory: Microsoft Security Advisory CVE-2026-118740 - Aspire Security Feature By... | 2026-11-10
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-13 10:59 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-14 10:29 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
