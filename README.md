@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-53998](https://github.com/advisories/GHSA-gfv3-m769-5xm3) | Phoenix: Format String Injection in applyChatTemplate | 2026-11-17
 - `CRITICAL` [CVE-2026-100397](https://github.com/advisories/GHSA-x585-4vv8-2mh2) | Rucio: Unauthenticated administrator impersonation through SSH challenge tokens | 2026-11-13
 - `CRITICAL` [CVE-2026-122006](https://github.com/advisories/GHSA-f3w6-w445-fwh9) | Active Storage: Possible arbitrary file write and read in image analysis | 2026-11-12
 - `CRITICAL` [CVE-2026-118740](https://github.com/advisories/GHSA-4g86-54fm-h9h8) | Microsoft Security Advisory CVE-2026-118740 - Aspire Security Feature Bypass Vulnerability | 2026-11-12
 - `CRITICAL` [CVE-2026-126187](https://github.com/advisories/GHSA-xqc2-xf4c-x3h3) | React: Unauthenticated Remote Code Execution in React Server Components | 2026-11-10
-- `CRITICAL` [GHSA-2f3w-v7f5-vpgx](https://github.com/advisories/GHSA-2f3w-v7f5-vpgx) | Duplicate Advisory: Microsoft Security Advisory CVE-2026-118740 - Aspire Security Feature By... | 2026-11-10
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-17 11:53 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-18 11:43 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
