@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
-- `CRITICAL` [CVE-2026-75521](https://github.com/advisories/GHSA-8fh7-7q4q-cq52) | Miren Runtime: Authentication bypass in RPC layer: unverified TLS client certificates grant... | 2026-11-19
-- `CRITICAL` [CVE-2026-69157](https://github.com/advisories/GHSA-pfwx-xjp4-qxcj) | Atomic Server: Unauthenticated /setup invite grants write access to the entire Drive | 2026-11-18
-- `CRITICAL` [CVE-2026-130001](https://github.com/advisories/GHSA-5hrj-7fc3-cmx9) | Mustache for Ruby: RCE using built-in method access | 2026-11-18
-- `CRITICAL` [CVE-2026-53998](https://github.com/advisories/GHSA-gfv3-m769-5xm3) | Phoenix: Format String Injection in applyChatTemplate | 2026-11-17
-- `CRITICAL` [CVE-2026-100397](https://github.com/advisories/GHSA-x585-4vv8-2mh2) | Rucio: Unauthenticated administrator impersonation through SSH challenge tokens | 2026-11-13
+- `CRITICAL` [CVE-2026-114516](https://github.com/advisories/GHSA-mc8w-wjhw-45x5) | Etherpad: Pre-auth arbitrary file read | 2026-11-20
+- `CRITICAL` [CVE-2026-77369](https://github.com/advisories/GHSA-wj7x-58c2-5793) | Daptin: Broken Access Control (IDOR) in the generic YJS collaboration endpoint | 2026-11-20
+- `CRITICAL` [CVE-2026-77367](https://github.com/advisories/GHSA-hq2p-f2vj-v3cm) | Daptin: Unauthenticated SQL Injection via the sort query parameter on every entity list endp... | 2026-11-20
+- `CRITICAL` [CVE-2026-77359](https://github.com/advisories/GHSA-9x8x-crjq-g64h) | Jupyter MCP Server: Browser DNS rebinding can hijack the Jupyter backend through management... | 2026-11-20
+- `CRITICAL` [CVE-2026-77312](https://github.com/advisories/GHSA-p34x-fmph-9fjx) | Flyto2 Core: Arbitrary file write via unguarded data./file. modules (incomplete fix of CVE-2... | 2026-11-20
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-19 11:41 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-20 11:41 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
