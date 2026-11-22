@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-77367](https://github.com/advisories/GHSA-hq2p-f2vj-v3cm) | Daptin: Unauthenticated SQL Injection via the sort query parameter on every entity list endp... | 2026-11-20
 - `CRITICAL` [CVE-2026-77359](https://github.com/advisories/GHSA-9x8x-crjq-g64h) | Jupyter MCP Server: Browser DNS rebinding can hijack the Jupyter backend through management... | 2026-11-20
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-21 11:03 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-22 11:26 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
