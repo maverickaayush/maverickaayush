@@ -69,13 +69,13 @@ seed device -> CDP/LLDP discovery -> normalized config -> CIS / NIST 800-53 / DI
 Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 
 <!-- ADVISORIES:START -->
+- `CRITICAL` [CVE-2026-69179](https://github.com/advisories/GHSA-7wwv-x6mc-pxqx) | TastyIgniter allows Remote Code Execution (RCE) via Unrestricted file upload in Media Manager | 2026-11-25
+- `CRITICAL` [CVE-2026-69178](https://github.com/advisories/GHSA-743w-g9pf-8p94) | TastyIgniter mail template editor allows remote code execution via server-side template inje... | 2026-11-25
+- `CRITICAL` [CVE-2026-64670](https://github.com/advisories/GHSA-crj3-q72p-ggqm) | waline/client vulnerable to stored XSS through unsanitized comment edit previews | 2026-11-25
 - `CRITICAL` [CVE-2026-59726](https://github.com/advisories/GHSA-c4hm-4h84-2cf3) | ruflo MCP bridge allows unauthenticated remote code execution in default Docker Compose depl... | 2026-11-24
 - `CRITICAL` [CVE-2026-133469](https://github.com/advisories/GHSA-2r3w-c2vx-fv5g) | Xen Orchestra: Empty-object login token | 2026-11-23
-- `CRITICAL` [CVE-2026-104099](https://github.com/advisories/GHSA-4hrh-34w3-5ww8) | Fabio: Access-control bypass through unnormalized request paths | 2026-11-20
-- `CRITICAL` [CVE-2026-114516](https://github.com/advisories/GHSA-mc8w-wjhw-45x5) | Etherpad: Pre-auth arbitrary file read | 2026-11-20
-- `CRITICAL` [CVE-2026-77369](https://github.com/advisories/GHSA-wj7x-58c2-5793) | Daptin: Broken Access Control (IDOR) in the generic YJS collaboration endpoint | 2026-11-20
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-25 12:57 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-26 12:36 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
