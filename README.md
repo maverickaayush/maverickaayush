@@ -75,7 +75,7 @@ Latest critical, GitHub-reviewed advisories. Refreshed daily by a GitHub Action.
 - `CRITICAL` [CVE-2026-59726](https://github.com/advisories/GHSA-c4hm-4h84-2cf3) | ruflo MCP bridge allows unauthenticated remote code execution in default Docker Compose depl... | 2026-11-24
 - `CRITICAL` [CVE-2026-133469](https://github.com/advisories/GHSA-2r3w-c2vx-fv5g) | Xen Orchestra: Empty-object login token | 2026-11-23
 
-<sub>Source: GitHub Advisory Database | synced 2026-11-26 12:36 UTC</sub>
+<sub>Source: GitHub Advisory Database | synced 2026-11-27 12:22 UTC</sub>
 <!-- ADVISORIES:END -->
 
 ## ~$ ls skills/
